@@ -1,0 +1,19 @@
+<div class="background-image"></div>
+
+<div class="shop-layout">
+    <cart></cart>
+    <div>
+        <table>
+            <tr>
+                <td [routerLink]="['/shop/category',category._id]" *ngFor="let category of categories">{{category.name}}</td>
+            </tr>
+        </table>
+        <div>
+            <label>Search: </label>
+            <input type="text" name="search" [ngModel]="searchQuery" (ngModelChange)="onSearchChanged($event)" >
+        </div>
+        <router-outlet *ngIf="!searchQuery"></router-outlet>
+        <product-list *ngIf="searchQuery" [products]="searchedProducts" (selected)="onProductSelected($event)"></product-list>
+    </div>
+    <product-popup></product-popup>
+</div>

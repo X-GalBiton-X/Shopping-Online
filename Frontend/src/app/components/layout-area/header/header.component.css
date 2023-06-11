@@ -1,0 +1,20 @@
+h1 {
+    position: fixed;
+    margin-top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 3px solid black;
+    padding: 5px;
+    background-color: cornflowerblue;
+}
+
+.logout {
+    position: fixed;
+    top: 30px;
+    right: 18px;
+    font-size: 14px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: turquoise;
+    text-decoration: none;
+    cursor: pointer;
+}

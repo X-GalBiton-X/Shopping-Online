@@ -1,0 +1,54 @@
+.sidebar-title {
+    color: white;
+    background-color: blueviolet;
+    border-radius: 20px;
+    width: 150px;
+    margin: 10px auto 10px;
+}
+
+.sidebar {
+    text-align: center;
+    margin: auto;
+    padding: 0px 30px 30px;
+    width: 460px;
+    border: 2px solid yellow;
+    border-radius: 12px;
+    color: black;
+    height: 620px;
+    overflow-y: auto;
+    background-color: blue;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 200px;
+    gap: 5px;
+}
+
+span {
+    color: red;
+    position: absolute;
+    background-color: white;
+    width: max-content;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.name-error {
+    margin: 66px 210px;
+}
+
+.price-error {
+    margin: 138px 210px;
+}
+
+.category-error {
+    margin: 280px 210px;
+}
+
+form > .ng-invalid.ng-touched {
+    background-color: pink;
+    border: 2px solid red;
+}

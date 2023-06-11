@@ -1,0 +1,15 @@
+<div class="sidebar">
+    <h3 class="sidebar-title">My cart</h3>
+    <table>
+        <tr *ngFor="let entry of cartContent">
+            <td>
+                <product-card [product]="entry.product"></product-card>
+            </td>
+            <td>amount: {{entry.quantity}}</td>
+            <td (click)="removeFromCart(entry.product)">❌</td>
+        </tr>
+    </table>
+    <div class="total">Total: {{getTotal()}}₪</div>
+    <button (click)="clearCart()">Clear All</button>
+    <button (click)="order()">Order</button>
+</div>

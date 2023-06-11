@@ -1,0 +1,88 @@
+<div class="background-image"></div>
+
+<div class="component">
+    <div class="cart">
+
+        <h2 class="cart-title">My cart</h2>
+        <hr>
+
+        <table>
+            <tr *ngFor="let entry of cartContent">
+                <td><product-card [product]="entry.product"></product-card></td>
+                <td>amount: {{entry.quantity}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <form (ngSubmit)="send()" #orderForm="ngForm">
+
+        <h2 class="cart-title">Order</h2>
+        <hr>
+
+        <table>
+            <div>
+                <tr>
+                    <td>
+                        <h3>Shipping Details:</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        <select name="city" [(ngModel)]="order.city" #cityModel="ngModel" required (dblclick)="setUserCityToDefault()">
+                            <option *ngFor="let city of cities | keyvalue" [value]="city.value">{{city.value}}</option>
+                        </select>
+                        <span class="city-error" *ngIf="cityModel.errors?.['required'] && cityModel.touched">Missing city</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Street: </td>
+                    <td>
+                        <input type="text" name="street" [(ngModel)]="order.street" #streetModel="ngModel" required
+                            pattern="^.{2,100}$" (dblclick)="setUserStreetToDefault()">
+                        <span class="street-error"
+                            *ngIf="streetModel.errors?.['required'] && streetModel.touched">Missing street</span>
+                        <span class="street-error" *ngIf="streetModel.errors?.['pattern'] && streetModel.touched">Length
+                            must be between 2 to 100</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Shipping Date: </td>
+                    <td>
+                        <input type="date" name="date" [(ngModel)]="order.shippingDate" #dateModel="ngModel" required>
+                        <span class="date-error" *ngIf="dateModel.errors?.['required'] && dateModel.touched">Missing
+                            date</span>
+                    </td>
+                </tr>
+            </div>
+            <div>
+                <tr>
+                    <td>
+                        <h3>Payments:</h3>
+                    </td>
+                </tr>
+                <tr class="credit-card">
+                    <td>Credit Card:</td>
+                    <td>
+                        <input type="text" name="creditCard" [(ngModel)]="creditCard" #creditCardModel="ngModel"
+                            required
+                            pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$">
+                        <span class="credit-card-error"
+                            *ngIf="creditCardModel.errors?.['required'] && creditCardModel.touched">Missing credit
+                            card</span>
+                        <span class="credit-card-error"
+                            *ngIf="creditCardModel.errors?.['pattern'] && creditCardModel.touched">Invalid credit
+                            card</span>
+                    </td>
+                </tr>
+            </div>
+        </table>
+
+        <button [disabled]="orderForm.invalid">Order</button>
+
+    </form>
+
+</div>
+
+<app-order-popup [open]="open" [orderId]="orderId"></app-order-popup>

@@ -1,0 +1,34 @@
+<div class="sidebar">
+    <h3 class="sidebar-title">{{editedProduct.name}}</h3>
+    <hr>
+
+    <button (click)="setNewProduct()">➕</button>
+
+    <form (ngSubmit)="save()" #sidebarForm="ngForm" *ngIf="editedProduct">
+
+        <label style="width: max-content;">Id: {{editedProduct._id}}</label>
+
+        <label>Name: </label>
+        <input type="text" name="name" [(ngModel)]="editedProduct.name" #nameModel="ngModel" required pattern="^.{2,100}$">
+        <span class="name-error" *ngIf="nameModel.errors?.['required'] && nameModel.touched">Missing name</span>
+        <span class="name-error" *ngIf="nameModel.errors?.['pattern'] && nameModel.touched">Length must be between 2 to 100</span>
+        
+        <label>Price: </label>
+        <input type="number" name="price" [(ngModel)]="editedProduct.price" #priceModel="ngModel" required min="0" max="1000">
+        <span class="price-error" *ngIf="priceModel.errors?.['required'] && priceModel.touched">Missing price</span>
+        <span class="price-error" *ngIf="priceModel.errors?.['min'] && priceModel.touched">'Price' can't be negative</span>
+        <span class="price-error" *ngIf="priceModel.errors?.['max'] && priceModel.touched">'Price' can't exceed 1000</span>
+        
+        <label>Picture: </label>
+        <input type="file" name="image" #productImage>
+        <!-- <input type="file" name="image" [(ngModel)]="editedProduct.image" #imageModel="ngModel" [required]="!!newProduct"> -->
+        
+        <label>Category: </label>
+        <select name="category" [(ngModel)]="editedProduct.categoryId" #categoryModel="ngModel" required>
+            <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
+        </select>
+        <span class="category-error" *ngIf="categoryModel.errors?.['required'] && categoryModel.touched">Missing category</span>
+    
+        <button [disabled]="sidebarForm.invalid">Save</button>
+    </form>
+</div>

@@ -1,0 +1,47 @@
+.sidebar-title {
+    color: white;
+    background-color: blueviolet;
+    border-radius: 20px;
+    width: 150px;
+    margin: 10px auto 10px;
+}
+
+.sidebar {
+    text-align: center;
+    margin: auto;
+    padding: 0px 30px 30px;
+    width: 460px;
+    border: 2px solid blue;
+    border-radius: 12px;
+    color: black;
+    height: 620px;
+    overflow-y: auto;
+}
+
+table,
+td {
+    padding: 5px 20px;
+    margin: 0 0 30px;
+    border: 1px solid;
+    border-collapse: collapse;
+    background-color: cadetblue;
+}
+
+td:nth-of-type(1),
+td:nth-of-type(2) {
+    text-align: left;
+}
+
+button,
+td:nth-of-type(3) {
+    cursor: pointer;
+}
+
+button:nth-of-type(1) {
+    margin-right: 10px;
+}
+
+.total {
+    background-color: greenyellow;
+    border-radius: 12px;
+}

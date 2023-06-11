@@ -1,0 +1,18 @@
+<div class="background-image"></div>
+
+<div class="admin-page-layout">
+    <sidebar></sidebar>
+    <div>
+        <table>
+            <tr>
+                <td [routerLink]="['/admin-page/category',category._id]" *ngFor="let category of categories">{{category.name}}</td>
+            </tr>
+        </table>
+        <div>
+            <label>Search: </label>
+            <input type="text" name="search" [ngModel]="searchQuery" (ngModelChange)="onSearchChanged($event)" >
+        </div>
+        <router-outlet *ngIf="!searchQuery"></router-outlet>
+        <product-list *ngIf="searchQuery" [products]="searchedProducts" (selected)="onProductSelected($event)"></product-list>
+    </div>
+</div>

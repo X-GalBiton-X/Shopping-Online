@@ -1,0 +1,24 @@
+.product-list {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.product-list > * {
+    cursor: pointer;
+}
+
+span:nth-of-type(1) {    
+    color: gold;
+    font-size: large;
+}
+
+span:nth-of-type(2) {    
+    color: white;
+}
+
+.product>:not(span:nth-of-type(2)) {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,15 @@
+<h3>Shop Info</h3>
+<p>{{numberOfProducts}} available products in our store</p>
+<p>{{numberOfOrders}} orders submitted in our store</p>
+
+<div *ngIf="user">
+    <p *ngIf="lastOrderStatus['openCart']" class="status-notice">
+        You have an open cart from {{formatDate(lastOrderStatus['openCart'].date)}} of {{lastOrderStatus['openCart'].totalPrice}} NIS
+    </p>
+    <p *ngIf="lastOrderStatus['hasLastOrder']" class="status-notice">
+        Your last purchase was on {{formatDate(lastOrderStatus['hasLastOrder'].date)}} for a total of {{lastOrderStatus['hasLastOrder'].totalPrice}} NIS
+    </p>
+    <p *ngIf="lastOrderStatus['newCustomer']" class="status-notice">
+        Welcome {{user.firstName}} to our store
+    </p>
+</div>

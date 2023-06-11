@@ -1,0 +1,28 @@
+<div class="box">
+
+    <form (ngSubmit)="send()" #credentialsForm="ngForm">
+
+        <label>Username(Email): </label>
+        <input type="email" name="username" [(ngModel)]="credentials.username" #usernameModel="ngModel" required
+            pattern="^(?:[^\W_]\.?){5,29}[^\W_]@[^\W_]+\.([a-zA-Z]{2,3}|([a-zA-Z]{2}\.[a-zA-Z]{2}))$">
+        <span class="username-error" *ngIf="usernameModel.errors?.['required'] && usernameModel.touched">Missing
+            email</span>
+        <span class="username-error" *ngIf="usernameModel.errors?.['pattern'] && usernameModel.touched">Invalid
+            email</span>
+
+        <label>Password: </label>
+        <input type="password" name="password" [(ngModel)]="credentials.password" #passwordModel="ngModel" required
+            pattern="^.{4,100}$">
+        <span class="password-error" *ngIf="passwordModel.errors?.['required'] && passwordModel.touched">Missing
+            password</span>
+        <span class="password-error" *ngIf="passwordModel.errors?.['pattern'] && passwordModel.touched">Length must be
+            between 4 to 100</span>
+
+        <div>
+            <button [disabled]="credentialsForm.invalid">Login</button>
+            <button type="button" routerLink="/step-one">Register</button>
+        </div>
+
+    </form>
+
+</div>

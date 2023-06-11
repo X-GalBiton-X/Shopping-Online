@@ -1,0 +1,38 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    gap: 5px;
+}
+
+button:nth-of-type(1) {
+    padding-left: 7.9%;
+    padding-right: 7.9%;
+}
+
+button:nth-of-type(2) {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+span {
+    color: red;
+    position: absolute;
+    background-color: white;
+    width: max-content;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.username-error {
+    margin: 36px 225px;
+}
+
+.password-error {
+    margin: 106px 225px;
+}
+
+form > .ng-invalid.ng-touched {
+    background-color: pink;
+    border: 2px solid red;
+}

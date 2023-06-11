@@ -1,0 +1,19 @@
+<div class="background-image"></div>
+
+<div class="home">
+
+    <div *ngIf="!user">
+        <app-logged-out></app-logged-out>
+        <span>Hello Guest</span>
+    </div>
+
+    <div *ngIf="user">
+        <app-logged-in></app-logged-in>
+        <span>Hello {{user.firstName}}</span>
+    </div>
+
+    <app-about></app-about>
+
+    <app-system-info></app-system-info>
+
+</div>

@@ -1,0 +1,52 @@
+<div class="background-image"></div>
+
+<div class="step-one">
+
+    <div class="step-one-form">
+
+        <h2>Registration - Step 1</h2>
+
+        <form (ngSubmit)="next()" #stepOneForm="ngForm">
+
+            <label>ID: </label>
+            <input type="number" name="userId" [(ngModel)]="midRegister.userId" #userIdModel="ngModel" required
+                pattern="^0*\d{9}$">
+            <span class="userId-error" *ngIf="userIdModel.errors?.['required'] && userIdModel.touched">Missing id</span>
+            <span class="userId-error" *ngIf="userIdModel.errors?.['pattern'] && userIdModel.touched">'Id' must be 9
+                digits</span>
+
+            <label>Email: </label>
+            <input type="email" name="username" [(ngModel)]="midRegister.username" #usernameModel="ngModel" required
+                pattern="^(?:[^\W_]\.?){5,29}[^\W_]@[^\W_]+\.([a-zA-Z]{2,3}|([a-zA-Z]{2}\.[a-zA-Z]{2}))$">
+            <span class="username-error" *ngIf="usernameModel.errors?.['required'] && usernameModel.touched">Missing
+                email</span>
+            <span class="username-error" *ngIf="usernameModel.errors?.['pattern'] && usernameModel.touched">Invalid
+                email</span>
+
+            <label>Password: </label>
+            <input type="password" name="password" [(ngModel)]="midRegister.password" #passwordModel="ngModel" required
+                pattern="^.{4,100}$">
+            <span class="password-error" *ngIf="passwordModel.errors?.['required'] && passwordModel.touched">Missing
+                password</span>
+            <span class="password-error" *ngIf="passwordModel.errors?.['pattern'] && passwordModel.touched">Length must
+                be
+                between 4 to 100</span>
+
+            <label>Confirm Password: </label>
+            <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" #confirmPasswordModel="ngModel"
+                required pattern="^.{4,100}$">
+            <span class="confirm-password-error"
+                *ngIf="confirmPasswordModel.errors?.['required'] && confirmPasswordModel.touched">Missing confirmation
+                password</span>
+            <span class="confirm-password-error"
+                *ngIf="confirmPasswordModel.errors?.['pattern'] && confirmPasswordModel.touched">Length must be between
+                4 to
+                100</span>
+
+            <button [disabled]="stepOneForm.invalid">Continue</button>
+
+        </form>
+
+    </div>
+
+</div>

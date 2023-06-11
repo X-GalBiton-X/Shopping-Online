@@ -1,0 +1,68 @@
+.step-two {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.step-two-form {
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 15px;
+    width: fit-content;
+    margin: auto;
+}
+
+.background-image {
+    margin-top: 30px;
+    background: url(src/assets/images/shopping_trolley_in_supermarket_aisle.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    background-size: 100vw 100vh;
+    position: fixed;
+    z-index: -1;
+}
+
+h2 {
+    color: black;
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 200px;
+    gap: 5px;
+}
+
+span {
+    color: red;
+    position: absolute;
+    background-color: white;
+    width: max-content;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.city-error {
+    margin: 34px 210px;
+}
+
+.street-error {
+    margin: 104px 210px;
+}
+
+.first-name-error {
+    margin: 175px 210px;
+}
+
+.last-name-error {
+    margin: 245px 210px;
+}
+
+form > .ng-invalid.ng-touched {
+    background-color: pink;
+    border: 2px solid red;
+}

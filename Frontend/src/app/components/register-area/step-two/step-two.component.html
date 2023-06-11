@@ -1,0 +1,47 @@
+<div class="background-image"></div>
+
+<div class="step-two">
+    
+    <div class="step-two-form">
+        
+        <h2>Registration - Step 2</h2>
+
+        <form (ngSubmit)="send()" #stepTwoForm="ngForm">
+
+            <label>City: </label>
+            <select name="city" [(ngModel)]="user.city" #cityModel="ngModel" required>
+                <option *ngFor="let city of cities | keyvalue" [value]="city.value">{{city.value}}</option>
+            </select>
+            <span class="city-error" *ngIf="cityModel.errors?.['required'] && cityModel.touched">Missing city</span>
+
+            <label>Street: </label>
+            <input type="text" name="street" [(ngModel)]="user.street" #streetModel="ngModel" required
+                pattern="^.{2,100}$">
+            <span class="street-error" *ngIf="streetModel.errors?.['required'] && streetModel.touched">Missing
+                street</span>
+            <span class="street-error" *ngIf="streetModel.errors?.['pattern'] && streetModel.touched">Length must be
+                between 2 to 100</span>
+
+            <label>First Name: </label>
+            <input type="text" name="firstName" [(ngModel)]="user.firstName" #firstNameModel="ngModel" required
+                pattern="^.{2,100}$">
+            <span class="first-name-error" *ngIf="firstNameModel.errors?.['required'] && firstNameModel.touched">Missing
+                first name</span>
+            <span class="first-name-error" *ngIf="firstNameModel.errors?.['pattern'] && firstNameModel.touched">Length
+                must be between 2 to 100</span>
+
+            <label>Last Name: </label>
+            <input type="text" name="lastName" [(ngModel)]="user.lastName" #lastNameModel="ngModel" required
+                pattern="^.{2,100}$">
+            <span class="last-name-error" *ngIf="lastNameModel.errors?.['required'] && lastNameModel.touched">Missing
+                last name</span>
+            <span class="last-name-error" *ngIf="lastNameModel.errors?.['pattern'] && lastNameModel.touched">Length must
+                be between 2 to 100</span>
+
+            <button [disabled]="stepTwoForm.invalid">Submit</button>
+
+        </form>
+    
+    </div>
+
+</div>

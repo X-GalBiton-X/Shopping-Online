@@ -1,0 +1,10 @@
+html, body, app-layout {
+    text-align: center;
+    font-size: x-large;
+    height: 100%;
+    margin: 0;
+}
+
+select, input, button {
+    font-size: x-large;
+}

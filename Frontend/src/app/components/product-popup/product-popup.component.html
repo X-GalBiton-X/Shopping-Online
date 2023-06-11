@@ -1,0 +1,10 @@
+<div class="popup" *ngIf="selectedProduct">
+    <h4>Add to cart:</h4>
+    <product-card [product]="selectedProduct"></product-card>
+    <div>
+        <button (click)="decrease()">-</button>
+        {{quantity}}
+        <button (click)="increase()">+</button>
+    </div>
+    <div><button (click)="addToCart()">Add</button></div>
+</div>
